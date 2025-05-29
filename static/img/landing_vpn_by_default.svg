@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" fill="#F0F2F5" rx="20"/>
+  
+  <g transform="translate(100,100)">
+    <!-- Основной круг -->
+    <circle r="45" fill="none" stroke="#00ff9d" stroke-width="2" opacity="0.4"/>
+    
+    <g transform="rotate(30)">
+      <line x1="30" y1="0" x2="55" y2="0" stroke="#00ff9d" stroke-width="1.5"/>
+      <circle cx="60" cy="0" r="2" fill="#00ff9d"/>
+    </g>
+    <g transform="rotate(150)">
+      <line x1="30" y1="0" x2="55" y2="0" stroke="#00ff9d" stroke-width="1.5"/>
+      <circle cx="60" cy="0" r="2" fill="#00ff9d"/>
+    </g>
+    <g transform="rotate(270)">
+      <line x1="30" y1="0" x2="55" y2="0" stroke="#00ff9d" stroke-width="1.5"/>
+      <circle cx="60" cy="0" r="2" fill="#00ff9d"/>
+    </g>
+    
+    <path d="M 30 0 L 45 15 L 60 0 L 45 -15 Z" fill="none" stroke="#00ff9d" stroke-width="1.2"/>
+    
+    <rect x="-15" y="-10" width="30" height="20" rx="3" fill="rgba(0,255,157,0.15)"/>
+    <rect x="-5" y="-3" width="10" height="6" rx="1" fill="rgba(0,255,157,0.3)"/>
+  </g>
+
+  <g transform="translate(50,50)">
+    <path d="M 10 10 L 20 10 L 15 20 Z" fill="#ff6b6b" opacity="0.6"/>
+    <circle cx="15" cy="25" r="3" fill="#4ecdc4"/>
+  </g>
+  
+  <g transform="translate(100,100)" opacity="0.3">
+    <path d="M 0 -50 Q 25 -60 50 -50 T 100 -50" fill="none" stroke="#45b7d1" stroke-width="1"/>
+    <path d="M -50 0 Q -60 25 -50 50 T -50 100" fill="none" stroke="#45b7d1" stroke-width="1"/>
+  </g>
+  
+  <g transform="translate(150,150)" opacity="0.4">
+    <circle r="12" fill="none" stroke="#fcbf49" stroke-width="1.5"/>
+    <path d="M 12 0 L 18 0" transform="rotate(30)" stroke="#fcbf49"/>
+    <path d="M 12 0 L 18 0" transform="rotate(90)" stroke="#fcbf49"/>
+    <path d="M 12 0 L 18 0" transform="rotate(150)" stroke="#fcbf49"/>
+  </g>
+</svg>

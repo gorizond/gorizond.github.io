@@ -1,0 +1,12 @@
+<svg width="120" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,60 Q60,20 120,60" fill="none" stroke="#000" />
+    <g transform="translate(70,30) rotate(-30)">
+        <circle cx="0" cy="0" r="6" fill="none" stroke="#000"  />
+        <rect x="-18" y="-4" width="12" height="8" fill="#000" />
+        <rect x="6" y="-4" width="12" height="8" fill="#000" />
+        <line x1="-6" y1="-6" x2="6" y2="6" stroke="#000" />
+        <line x1="6" y1="-6" x2="-6" y2="6" stroke="#000" />
+        <line x1="0" y1="-10" x2="0" y2="-20" stroke="#000" />
+        <circle cx="0" cy="-25" r="2" fill="#000" />
+    </g>
+</svg>

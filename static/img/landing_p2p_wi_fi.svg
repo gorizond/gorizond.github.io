@@ -1,0 +1,54 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Фон -->
+  
+  <rect width="200" height="200" fill="#F0F2F5" rx="20"/>
+  <!-- Устройства -->
+  <g stroke="#2f54eb" stroke-width="2" fill="none" opacity="0.8">
+    <!-- Устройство 1 -->
+    <circle cx="50" cy="50" r="15" />
+    <line x1="50" y1="35" x2="50" y2="15" stroke-width="3" stroke-linecap="round" />
+
+    <!-- Устройство 2 -->
+    <circle cx="150" cy="50" r="15" />
+    <line x1="150" y1="35" x2="150" y2="15" stroke-width="3" stroke-linecap="round" />
+
+    <!-- Устройство 3 -->
+    <circle cx="100" cy="150" r="15" />
+    <line x1="100" y1="135" x2="100" y2="115" stroke-width="3" stroke-linecap="round" />
+
+    <!-- Устройство 4 -->
+    <circle cx="150" cy="150" r="15" />
+    <line x1="150" y1="135" x2="150" y2="115" stroke-width="3" stroke-linecap="round" />
+
+    <!-- Устройство 5 -->
+    <circle cx="50" cy="150" r="15" />
+    <line x1="50" y1="135" x2="50" y2="115" stroke-width="3" stroke-linecap="round" />
+
+    <!-- Устройство 6 (центральный узел) -->
+    <circle cx="100" cy="100" r="20" stroke="#00c4ff" stroke-width="3" />
+    <line x1="100" y1="80" x2="100" y2="60" stroke="#00c4ff" stroke-width="4" stroke-linecap="round" />
+  </g>
+
+  <!-- Сетевые соединения -->
+  <g stroke="#2f54eb" stroke-width="1.5" fill="none" opacity="0.6">
+    <!-- Основные связи -->
+    <path d="M50 50 C75 25, 125 25, 150 50" stroke-dasharray="5 3" />
+    <path d="M100 150 C125 125, 125 75, 150 50" stroke-dasharray="5 3" />
+    <path d="M100 150 C75 125, 25 125, 50 150" stroke-dasharray="5 3" />
+    <path d="M50 50 C25 75, 25 125, 50 150" stroke-dasharray="5 3" />
+    <path d="M150 50 C175 75, 175 125, 150 150" stroke-dasharray="5 3" />
+
+    <!-- Дополнительные связи -->
+    <path d="M100 100 C50 80, 50 120, 100 150" stroke="#00c4ff" stroke-width="2" stroke-dasharray="4 2" />
+    <path d="M100 100 C150 80, 150 120, 100 50" stroke="#00c4ff" stroke-width="2" stroke-dasharray="4 2" />
+  </g>
+
+  <!-- Wi-Fi сигналы -->
+  <g stroke="#2f54eb" stroke-width="1" fill="none" opacity="0.4">
+
+    <!-- Центральный сигнал -->
+    <circle cx="100" cy="52" r="8" stroke="#00c4ff" stroke-dasharray="4 3" />
+  </g>
+
+
+</svg>
