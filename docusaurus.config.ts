@@ -131,7 +131,7 @@ const config: Config = {
                     ],
                 },
             ],
-            copyright: `Copyright © ${new Date().getFullYear()} Gorizond, Inc. Built with Docusaurus.`,
+            copyright: `Copyright © ${new Date().getFullYear()} Gorizond. ИНН 590504089898.`,
         },
         prism: {
             theme: prismThemes.github,
