@@ -1,0 +1,84 @@
+.pricingSection {
+    padding: 2rem 0;
+    margin: 4rem 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.column {
+    padding: 1rem;
+}
+
+.tier {
+    background: var(--ifm-card-background-color);
+    border-radius: var(--ifm-card-border-radius);
+    padding: 2rem;
+    box-shadow: var(--ifm-global-shadow-lw);
+    transition: transform 0.2s ease;
+}
+
+.tier:hover {
+    transform: translateY(-5px);
+}
+
+.highlighted {
+    border: 2px solid var(--ifm-color-primary);
+    background: rgba(66, 153, 225, 0.05);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--ifm-color-primary);
+    margin: 1rem 0;
+}
+
+.note {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.features li {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+.checkmark {
+    margin-right: 0.5rem;
+    color: var(--ifm-color-success);
+}
+
+.disabled .checkmark {
+    color: #ccc;
+}
+
+.disabled {
+    color: #888;
+}
+
+.details {
+    max-width: 800px;
+    margin: 2rem auto 0;
+    padding: 1rem;
+    background: rgba(0,0,0,0.05);
+    border-radius: var(--ifm-card-border-radius);
+}
