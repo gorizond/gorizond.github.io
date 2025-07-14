@@ -95,6 +95,7 @@ const config: Config = {
                     label: 'Tutorial',
                 },
                 {to: '/blog', label: 'Blog', position: 'left'},
+                {to: '/contacts', label: 'Contacts', position: 'left'},
                 {
                     href: 'https://github.com/gorizond',
                     label: 'GitHub',
@@ -125,13 +126,17 @@ const config: Config = {
                             to: '/blog',
                         },
                         {
+                            label: 'Contacts',
+                            to: '/contacts',
+                        },
+                        {
                             label: 'GitHub',
                             href: 'https://github.com/gorizond',
                         },
                     ],
                 },
             ],
-            copyright: `Copyright © ${new Date().getFullYear()} Gorizond. ИНН 590504089898.`,
+            copyright: `Copyright © ${new Date().getFullYear()} Gorizond`,
         },
         prism: {
             theme: prismThemes.github,
