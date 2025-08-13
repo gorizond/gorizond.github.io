@@ -50,7 +50,7 @@ export default function PricingModule() {
     ];
 
     return (
-        <section className={styles.pricingSection}>
+        <section id="pricing" className={styles.pricingSection}>
             <h2 className="text--center">Choose Your Plan</h2>
 
             <div className={styles.grid}>
