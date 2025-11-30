@@ -1,0 +1,11 @@
+{{- if .Values.extraNginxConfig }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "gorizond-site.fullname" . }}-nginx
+  labels:
+    {{- include "gorizond-site.labels" . | nindent 4 }}
+data:
+  extra.conf: |
+{{ .Values.extraNginxConfig | indent 4 }}
+{{- end }}

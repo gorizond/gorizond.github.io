@@ -1,0 +1,10 @@
+services:
+  docs:
+    build:
+      context: .
+    image: gorizond-docs:local
+    env_file:
+      - .env
+    ports:
+      - "${HTTP_PORT:-8080}:80"
+    restart: unless-stopped

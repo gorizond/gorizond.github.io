@@ -1,0 +1,7 @@
+node_modules
+build
+.docusaurus
+npm-debug.log*
+yarn-error.log*
+.env
+.idea

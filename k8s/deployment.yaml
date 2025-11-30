@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gorizond-docs
+  labels:
+    app: gorizond-docs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gorizond-docs
+  template:
+    metadata:
+      labels:
+        app: gorizond-docs
+    spec:
+      containers:
+        - name: docs
+          image: ghcr.io/example/gorizond-docs:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          env:
+            - name: DOMAIN
+              value: "docs.example.com"
+            - name: RANCHER_UPSTREAM
+              value: "https://rancher.example.com"
