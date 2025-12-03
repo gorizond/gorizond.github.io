@@ -44,7 +44,23 @@ env:
   domain: docs.example.com
   rancherUpstream: "" # nginx proxy upstream inside the pod; separate from direct Ingress routing
 
+# Docusaurus static paths that should NOT go to Rancher.
+# Uses regex patterns when rancher.enabled=true.
+docusaurus:
+  staticPaths:
+    - ^/$ # Root page only (exact match)
+    - ^/assets(/.*)?$ # /assets and /assets/*
+    - ^/img(/.*)?$ # /img and /img/*
+    - ^/blog(/.*)?$ # /blog and /blog/*
+    - ^/docs(/.*)?$ # /docs and /docs/*
+    - ^/contacts(/.*)?$ # /contacts and /contacts/*
+    - ^/search(/.*)?$ # /search (Docusaurus search)
+    - ^/[^/]+\.html$ # Any .html file at root
+    - ^/sitemap\.xml$ # Sitemap
+    - ^/robots\.txt$ # Robots
+
 # Rancher direct Ingress routing (bypasses nginx proxy).
+# When enabled, all paths NOT matching docusaurus.staticPaths go to Rancher.
 rancher:
   enabled: false
   serviceName: rancher

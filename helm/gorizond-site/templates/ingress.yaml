@@ -5,10 +5,13 @@ metadata:
   name: {{ include "gorizond-site.fullname" . }}
   labels:
     {{- include "gorizond-site.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
   annotations:
+    {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{- end }}
+    {{- if .Values.rancher.enabled }}
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    {{- end }}
 spec:
   {{- if .Values.ingress.className }}
   ingressClassName: {{ .Values.ingress.className }}
@@ -19,57 +22,43 @@ spec:
   {{- end }}
   rules:
     {{- range .Values.ingress.hosts }}
-    {{- $pathType := "Prefix" }}
-    {{- if and .paths (index .paths 0).pathType }}
-    {{- $pathType = (index .paths 0).pathType }}
-    {{- end }}
-    {{- $rootPath := "/" }}
-    {{- if and .paths (index .paths 0).path }}
-    {{- $rootPath = (index .paths 0).path }}
-    {{- end }}
     {{- $rancherServiceName := $.Values.rancher.serviceName }}
     {{- if $.Values.rancher.namespace }}
-    {{- $rancherServiceName = printf "%s.%s" $.Values.rancher.serviceName $.Values.rancher.namespace }}
+    {{- $rancherServiceName = printf "%s.%s.svc.cluster.local" $.Values.rancher.serviceName $.Values.rancher.namespace }}
     {{- end }}
     - host: {{ .host }}
       http:
         paths:
           {{- if $.Values.rancher.enabled }}
-          - path: /dashboard
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ $rancherServiceName }}
-                port:
-                  number: {{ $.Values.rancher.servicePort }}
-          - path: /v3
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ $rancherServiceName }}
-                port:
-                  number: {{ $.Values.rancher.servicePort }}
-          - path: /v1
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ $rancherServiceName }}
-                port:
-                  number: {{ $.Values.rancher.servicePort }}
-          - path: /k8s
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ $rancherServiceName }}
-                port:
-                  number: {{ $.Values.rancher.servicePort }}
-          {{- end }}
-          - path: {{ $rootPath }}
-            pathType: {{ $pathType }}
+          {{- /* Static paths go to Docusaurus */}}
+          {{- range $.Values.docusaurus.staticPaths }}
+          - path: {{ . }}
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: {{ include "gorizond-site.fullname" $ }}
                 port:
                   number: {{ $.Values.service.port }}
+          {{- end }}
+          {{- /* Everything else goes to Rancher */}}
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $rancherServiceName }}
+                port:
+                  number: {{ $.Values.rancher.servicePort }}
+          {{- else }}
+          {{- /* Rancher disabled - all traffic to Docusaurus */}}
+          {{- range .paths }}
+          - path: {{ .path }}
+            pathType: {{ .pathType | default "Prefix" }}
+            backend:
+              service:
+                name: {{ include "gorizond-site.fullname" $ }}
+                port:
+                  number: {{ $.Values.service.port }}
+          {{- end }}
+          {{- end }}
     {{- end }}
 {{- end }}
