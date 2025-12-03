@@ -9,9 +9,6 @@ metadata:
     {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
-    {{- if .Values.rancher.enabled }}
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    {{- end }}
 spec:
   {{- if .Values.ingress.className }}
   ingressClassName: {{ .Values.ingress.className }}
@@ -30,17 +27,17 @@ spec:
       http:
         paths:
           {{- if $.Values.rancher.enabled }}
-          {{- /* Static paths go to Docusaurus */}}
+          {{- /* Static paths go to Docusaurus (longer paths = higher priority in nginx) */}}
           {{- range $.Values.docusaurus.staticPaths }}
           - path: {{ . }}
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: {{ include "gorizond-site.fullname" $ }}
                 port:
                   number: {{ $.Values.service.port }}
           {{- end }}
-          {{- /* Everything else goes to Rancher */}}
+          {{- /* Everything else goes to Rancher (/ as catch-all, lowest priority) */}}
           - path: /
             pathType: Prefix
             backend:
