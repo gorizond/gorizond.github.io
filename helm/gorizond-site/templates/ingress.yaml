@@ -5,10 +5,10 @@ metadata:
   name: {{ include "gorizond-site.fullname" . }}
   labels:
     {{- include "gorizond-site.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
   annotations:
-    {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
-    {{- end }}
+  {{- end }}
 spec:
   {{- if .Values.ingress.className }}
   ingressClassName: {{ .Values.ingress.className }}
@@ -17,36 +17,36 @@ spec:
   tls:
     {{- toYaml .Values.ingress.tls | nindent 4 }}
   {{- end }}
+  {{- if .Values.rancher.enabled }}
+  {{- /* Rancher as defaultBackend - catches all unmatched paths */}}
+  {{- $rancherServiceName := .Values.rancher.serviceName }}
+  {{- if .Values.rancher.namespace }}
+  {{- $rancherServiceName = printf "%s.%s.svc.cluster.local" .Values.rancher.serviceName .Values.rancher.namespace }}
+  {{- end }}
+  defaultBackend:
+    service:
+      name: {{ $rancherServiceName }}
+      port:
+        number: {{ .Values.rancher.servicePort }}
+  {{- end }}
   rules:
     {{- range .Values.ingress.hosts }}
-    {{- $rancherServiceName := $.Values.rancher.serviceName }}
-    {{- if $.Values.rancher.namespace }}
-    {{- $rancherServiceName = printf "%s.%s.svc.cluster.local" $.Values.rancher.serviceName $.Values.rancher.namespace }}
-    {{- end }}
     - host: {{ .host }}
       http:
         paths:
           {{- if $.Values.rancher.enabled }}
-          {{- /* Static paths go to Docusaurus (longer paths = higher priority in nginx) */}}
+          {{- /* Docusaurus static paths */}}
           {{- range $.Values.docusaurus.staticPaths }}
-          - path: {{ . }}
-            pathType: Prefix
+          - path: {{ .path }}
+            pathType: {{ .pathType }}
             backend:
               service:
                 name: {{ include "gorizond-site.fullname" $ }}
                 port:
                   number: {{ $.Values.service.port }}
           {{- end }}
-          {{- /* Everything else goes to Rancher (/ as catch-all, lowest priority) */}}
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ $rancherServiceName }}
-                port:
-                  number: {{ $.Values.rancher.servicePort }}
           {{- else }}
-          {{- /* Rancher disabled - all traffic to Docusaurus */}}
+          {{- /* Rancher disabled - use paths from values */}}
           {{- range .paths }}
           - path: {{ .path }}
             pathType: {{ .pathType | default "Prefix" }}

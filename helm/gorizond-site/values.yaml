@@ -44,29 +44,40 @@ env:
   domain: docs.example.com
   rancherUpstream: "" # nginx proxy upstream inside the pod; separate from direct Ingress routing
 
-# Docusaurus static paths that should NOT go to Rancher.
-# Uses Prefix pathType - nginx prioritizes longer paths over shorter ones.
-docusaurus:
-  staticPaths:
-    - /assets
-    - /img
-    - /blog
-    - /docs
-    - /contacts
-    - /search
-    - /sitemap.xml
-    - /robots.txt
-    - /favicon.ico
-    - /manifest.json
-
-# Rancher direct Ingress routing (bypasses nginx proxy).
-# When enabled, all paths NOT matching docusaurus.staticPaths go to Rancher.
+# Rancher as defaultBackend - catches all paths not matched by Docusaurus.
+# When enabled, Docusaurus paths are explicit, everything else goes to Rancher.
 rancher:
   enabled: false
   serviceName: rancher
   servicePort: 80
-  # Set when Rancher is in a different namespace; omitted uses release namespace.
   namespace: ""
+
+# Docusaurus static paths (used when rancher.enabled=true).
+# These paths go to Docusaurus, everything else goes to Rancher via defaultBackend.
+docusaurus:
+  staticPaths:
+    - path: /
+      pathType: Exact
+    - path: /assets
+      pathType: Prefix
+    - path: /img
+      pathType: Prefix
+    - path: /blog
+      pathType: Prefix
+    - path: /docs
+      pathType: Prefix
+    - path: /contacts
+      pathType: Prefix
+    - path: /search
+      pathType: Prefix
+    - path: /sitemap.xml
+      pathType: Exact
+    - path: /robots.txt
+      pathType: Exact
+    - path: /favicon.ico
+      pathType: Exact
+    - path: /manifest.json
+      pathType: Exact
 
 resources:
   limits:
