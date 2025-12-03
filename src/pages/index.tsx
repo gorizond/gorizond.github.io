@@ -29,7 +29,7 @@ function HomepageHeader() {
                     <Link
                         className="button button--secondary button--lg"
                         style={{ backgroundColor: '#90EBCD' }}
-                        to="https://gorizond.negash.ru">
+                        to="https://gorizond.negash.ru/dashboard/">
                         Go to app
                     </Link>
                     <div style={{ margin: '16px' }}></div>
