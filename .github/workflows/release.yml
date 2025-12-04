@@ -23,6 +23,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --force
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Reduce build context size
+        run: rm -rf node_modules
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
