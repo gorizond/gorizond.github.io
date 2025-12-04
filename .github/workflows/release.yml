@@ -31,12 +31,13 @@ jobs:
         run: |
           REF="${GITHUB_REF_NAME}"
           if [[ "${GITHUB_REF_TYPE}" == "tag" && "${REF}" =~ ^v[0-9]+(\.[0-9]+)*$ ]]; then
-            VERSION="${REF#v}"
+            VERSION="${REF#v}"                 # release: X.X.X from tag vX.X.X
           else
-            VERSION="0.0.0-sha.${GITHUB_RUN_NUMBER}"
+            VERSION="0.0.${GITHUB_RUN_NUMBER}" # non-tag: 0.0.N
           fi
+          ALT_TAG="v${VERSION}"                # convenience docker tag with leading v
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
-          echo "alt_tag=sha-0.0.${GITHUB_RUN_NUMBER}" >> "$GITHUB_OUTPUT"
+          echo "alt_tag=${ALT_TAG}" >> "$GITHUB_OUTPUT"
 
       - name: Set up Node
         uses: actions/setup-node@v4
