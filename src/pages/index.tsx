@@ -73,7 +73,9 @@ export default function Home(): ReactNode {
             <HomepageHeader />
             <main>
                 <HomepageFeatures />
-                <PricingModule />
+                <section id="pricing">
+                    <PricingModule />
+                </section>
             </main>
         </Layout>
     );
