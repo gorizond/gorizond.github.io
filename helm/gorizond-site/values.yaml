@@ -59,7 +59,7 @@ docusaurus:
     - path: /
       pathType: Exact
     - path: /ru
-      pathType: Exact
+      pathType: Prefix
     - path: /assets
       pathType: Prefix
     - path: /img
