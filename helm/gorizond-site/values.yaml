@@ -58,6 +58,8 @@ docusaurus:
   staticPaths:
     - path: /
       pathType: Exact
+    - path: /ru
+      pathType: Exact
     - path: /assets
       pathType: Prefix
     - path: /img
