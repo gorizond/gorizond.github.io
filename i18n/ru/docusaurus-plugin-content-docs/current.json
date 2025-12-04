@@ -1,0 +1,10 @@
+{
+  "version.label": {
+    "message": "Текущая",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.saas": {
+    "message": "SaaS",
+    "description": "The label for category 'saas' in sidebar 'tutorialSidebar'"
+  }
+}
