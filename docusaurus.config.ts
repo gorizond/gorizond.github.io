@@ -1,6 +1,6 @@
-import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
+import { themes as prismThemes } from "prism-react-renderer";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -105,6 +105,12 @@ const config: Config = {
         },
         { to: "/blog", label: "Blog", position: "left" },
         { to: "/contacts", label: "Contacts", position: "left" },
+        {
+          href: "https://gorizond.negash.ru/dashboard/",
+          label: "Go to app",
+          position: "right",
+          className: "navbar__cta",
+        },
         {
           href: "https://github.com/gorizond",
           label: "GitHub",

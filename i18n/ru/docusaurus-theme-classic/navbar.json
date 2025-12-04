@@ -19,6 +19,10 @@
     "message": "Контакты",
     "description": "Navbar item with label Contacts"
   },
+  "item.label.Go to app": {
+    "message": "К приложению",
+    "description": "Navbar item with label Go to app"
+  },
   "item.label.GitHub": {
     "message": "GitHub",
     "description": "Navbar item with label GitHub"

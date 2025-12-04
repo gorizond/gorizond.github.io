@@ -326,6 +326,10 @@
     "message": "Теги",
     "description": "The title of the tag list page"
   },
+  "navbar.cta.app": {
+    "message": "Перейти в приложение",
+    "description": "Navbar button to open the app"
+  },
   "homepage.hero.tagline": {
     "message": "Самый простой способ запускать и управлять k3s на IoT",
     "description": "Homepage hero subtitle"
