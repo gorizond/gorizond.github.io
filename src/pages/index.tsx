@@ -53,14 +53,23 @@ function HomepageHeader() {
             </Translate>
           </Link>
           <div style={{ margin: "16px" }}></div>
-          <Link className="button button--secondary button--lg" to="#pricing">
+          <button
+            type="button"
+            className="button button--secondary button--lg"
+            onClick={() => {
+              const el = document.getElementById("pricing");
+              if (el) {
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+            }}
+          >
             <Translate
               id="homepage.hero.cta.pricing"
               description="CTA to scroll to pricing"
             >
               View pricing
             </Translate>
-          </Link>
+          </button>
         </div>
       </div>
     </header>

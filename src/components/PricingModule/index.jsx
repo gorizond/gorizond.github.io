@@ -90,8 +90,8 @@ export default function PricingModule() {
           included: true,
           text: translate({
             id: "pricing.tier.paid.feature.vms",
-            message: "Unlimited VMs",
-            description: "Paid plan feature: unlimited VMs",
+            message: "Unlimited instances (workers)",
+            description: "Paid plan feature: unlimited instances/workers",
           }),
         },
         {
@@ -123,8 +123,8 @@ export default function PricingModule() {
   ];
 
   return (
-    <section id="pricing" className={styles.pricingSection}>
-      <h2 className="text--center">
+    <section className={styles.pricingSection}>
+      <h2 id="pricing" className="text--center">
         <Translate id="pricing.title" description="Section title for pricing">
           Choose Your Plan
         </Translate>
@@ -159,9 +159,9 @@ export default function PricingModule() {
           <li>
             <Translate
               id="pricing.limitations.count"
-              description="Free tier limitation: VM count"
+              description="Free tier limitation: instance/worker count"
             >
-              Limited to 1 concurrent VM
+              Limited to 1 concurrent instance (worker)
             </Translate>
           </li>
         </ul>
