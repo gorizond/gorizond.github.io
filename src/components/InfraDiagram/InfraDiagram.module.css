@@ -1,0 +1,56 @@
+.svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.placeholder,
+.errorBox {
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #475569;
+    background: var(--ifm-background-surface-color, #f8fafc);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 12px;
+}
+
+.errorBox {
+    color: #b42318;
+    background: #fff1f0;
+    border-color: #ffcdc6;
+}
+
+.nodeRect {
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        stroke-width 0.2s ease;
+}
+
+.nodeLabel {
+    font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    fill: #0f172a;
+    user-select: none;
+}
+
+.laneLabel {
+    font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    opacity: 0.9;
+}
+
+.edgePath {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition:
+        stroke 0.2s ease,
+        stroke-width 0.2s ease,
+        opacity 0.2s ease;
+}

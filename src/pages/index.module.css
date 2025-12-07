@@ -4,26 +4,124 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+    padding: 4rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+    .heroBanner {
+        padding: 2rem;
+    }
 }
 
 .buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (max-width: 768px) {
-  .buttons {
-    flex-direction: column;
-  }
+    .buttons {
+        flex-direction: column;
+    }
+}
+
+.problemSection {
+    padding: 3rem 0;
+    background: linear-gradient(
+        180deg,
+        var(--ifm-background-color) 0%,
+        var(--ifm-background-surface-color, #f8fafc) 100%
+    );
+}
+
+.problemIntro {
+    max-width: 920px;
+    margin: 0 auto 1.5rem;
+    text-align: center;
+}
+
+.problemTitle {
+    margin-bottom: 0.35rem;
+}
+
+.problemText {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.problemGrid {
+    display: grid;
+    grid-template-columns: minmax(320px, 420px) minmax(520px, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+}
+
+@media screen and (max-width: 1100px) {
+    .problemGrid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+.problemTitle {
+    margin-bottom: 0.3rem;
+}
+
+.problemLead {
+    margin: 0.25rem 0 1rem;
+    color: var(--ifm-font-color-base);
+    opacity: 0.85;
+    font-size: 1.05rem;
+}
+
+.problemList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.problemList li {
+    background: var(--ifm-card-background-color);
+    border: 1px solid var(--ifm-color-primary-lightest, #dbeafe);
+    border-left: 4px solid var(--ifm-color-primary);
+    border-radius: 12px;
+    padding: 0.75rem 0.85rem;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+@media screen and (max-width: 768px) {
+    .problemList li {
+        font-weight: 500;
+    }
+}
+
+.problemVisual {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+}
+
+.problemVisual img {
+    width: 100%;
+    min-width: 720px;
+    max-width: 1100px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+
+.problemVisual figcaption {
+    margin-top: 0.5rem;
+    text-align: center;
 }

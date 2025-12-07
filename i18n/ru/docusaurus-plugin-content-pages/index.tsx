@@ -25,7 +25,7 @@ function HomepageHeader() {
             id="homepage.hero.tagline"
             description="Homepage hero subtitle"
           >
-            The simplest way to launch and manage k3s on IoT
+            Самый простой способ запустить и управлять k3s на IoT
           </Translate>
         </p>
         <div className={styles.buttons}>
@@ -37,7 +37,7 @@ function HomepageHeader() {
               id="homepage.hero.cta.tutorial"
               description="Primary CTA button text"
             >
-              Gorizond Tutorial - 5min ⏱️
+              Туториал Gorizond — 5 минут ⏱️
             </Translate>
           </Link>
           <div style={{ margin: "16px" }}></div>
@@ -50,7 +50,7 @@ function HomepageHeader() {
               id="homepage.hero.cta.app"
               description="CTA to open the app"
             >
-              Go to app
+              Войти в приложение
             </Translate>
           </Link>
           <div style={{ margin: "16px" }}></div>
@@ -68,7 +68,7 @@ function HomepageHeader() {
               id="homepage.hero.cta.pricing"
               description="CTA to scroll to pricing"
             >
-              View pricing
+              Тарифы
             </Translate>
           </button>
         </div>
@@ -83,14 +83,14 @@ function ProblemSection() {
       <div className="container">
         <div className={styles.problemIntro}>
           <Heading as="h2" className={styles.problemTitle}>
-            Why Gorizond?
+            Зачем Gorizond?
           </Heading>
           <p className={styles.problemText}>
-            Gorizond removes networking and control-plane pain for IoT/edge: k3s
-            is up in minutes, nodes auto-join a headscale/tailscale mesh, and
-            clusters land in Rancher with GitOps via Fleet. No manual VPN,
-            port-forwarding, or ingress tweaks — just run one command on the
-            device and you get a ready UI.
+            Gorizond убирает сетевую головную боль и управление control plane
+            для IoT/edge: k3s поднимается за минуты, узлы сами выходят в mesh
+            через headscale/tailscale, кластеры сразу появляются в Rancher с
+            GitOps через Fleet. Никаких ручных VPN, пробросов и настройки
+            ingress — одна команда на устройстве и готовый UI.
           </p>
         </div>
         <figure className={styles.problemVisual}>
@@ -117,20 +117,16 @@ export default function Home(): ReactNode {
       }
     };
 
-    // Scroll on first render
     scrollToPricingIfNeeded();
-
-    // Scroll on hash change
     window.addEventListener("hashchange", scrollToPricingIfNeeded);
-    return () =>
-      window.removeEventListener("hashchange", scrollToPricingIfNeeded);
+    return () => window.removeEventListener("hashchange", scrollToPricingIfNeeded);
   }, []);
 
   return (
     <Layout
       description={translate({
         id: "homepage.meta.description",
-        message: "Gorizond: the simplest way to launch and manage k3s on IoT",
+        message: "Gorizond: лучший способ запустить и управлять k3s на IoT",
       })}
     >
       <HomepageHeader />
