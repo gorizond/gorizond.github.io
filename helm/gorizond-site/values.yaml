@@ -51,6 +51,31 @@ rancher:
   serviceName: rancher
   servicePort: 80
   namespace: ""
+  staticPaths:
+    # Direct Rancher endpoints that should bypass the Docusaurus frontend.
+    - path: /dashboard
+      pathType: Prefix
+    - path: /v3
+      pathType: Prefix
+    - path: /v1
+      pathType: Prefix
+    - path: /k8s
+      pathType: Prefix
+    - path: /assets/docker-machine-driver-makecloud
+      pathType: Prefix
+    - path: /assets/rancher-system-agent-amd64
+      pathType: Prefix
+    - path: /assets/rancher-system-agent-arm64
+      pathType: Prefix
+    - path: /assets/rancher-system-agent-s390x
+      pathType: Prefix
+    - path: /assets/rancher-system-agent-arm
+      pathType: Prefix
+    - path: /assets/system-agent-uninstall.sh
+      pathType: Prefix
+  # Additional Rancher routes (e.g. specific /assets/* URLs) can be placed here
+  # when they need to reach Rancher even though /assets is routed to Docusaurus.
+  additionalStaticPaths: []
 
 # Docusaurus static paths (used when rancher.enabled=true).
 # These paths go to Docusaurus, everything else goes to Rancher via defaultBackend.
@@ -80,6 +105,8 @@ docusaurus:
       pathType: Exact
     - path: /manifest.json
       pathType: Exact
+  # Extend the Docusaurus list with any extra prefixes (e.g. new locales or API stubs).
+  additionalStaticPaths: []
 
 resources:
   limits:

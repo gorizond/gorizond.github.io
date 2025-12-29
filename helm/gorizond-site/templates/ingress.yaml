@@ -35,10 +35,42 @@ spec:
       http:
         paths:
           {{- if $.Values.rancher.enabled }}
+          {{- $rancherServiceName := $.Values.rancher.serviceName }}
+          {{- if $.Values.rancher.namespace }}
+          {{- $rancherServiceName = printf "%s.%s.svc.cluster.local" $.Values.rancher.serviceName $.Values.rancher.namespace }}
+          {{- end }}
+          {{- /* Rancher-specific static paths (can include entries under /assets). */}}
+          {{- range $.Values.rancher.staticPaths }}
+          - path: {{ .path }}
+            pathType: {{ .pathType | default "Prefix" }}
+            backend:
+              service:
+                name: {{ $rancherServiceName }}
+                port:
+                  number: {{ $.Values.rancher.servicePort }}
+          {{- end }}
+          {{- range $.Values.rancher.additionalStaticPaths }}
+          - path: {{ .path }}
+            pathType: {{ .pathType | default "Prefix" }}
+            backend:
+              service:
+                name: {{ $rancherServiceName }}
+                port:
+                  number: {{ $.Values.rancher.servicePort }}
+          {{- end }}
           {{- /* Docusaurus static paths */}}
           {{- range $.Values.docusaurus.staticPaths }}
           - path: {{ .path }}
             pathType: {{ .pathType }}
+            backend:
+              service:
+                name: {{ include "gorizond-site.fullname" $ }}
+                port:
+                  number: {{ $.Values.service.port }}
+          {{- end }}
+          {{- range $.Values.docusaurus.additionalStaticPaths }}
+          - path: {{ .path }}
+            pathType: {{ .pathType | default "Prefix" }}
             backend:
               service:
                 name: {{ include "gorizond-site.fullname" $ }}

@@ -107,6 +107,12 @@ ingress:
     - hosts: [docs.example.com]
       secretName: gorizond-docs-tls
 
+# When `rancher.enabled` is `true`, the chart already exposes the Rancher endpoints
+# (`/dashboard`, `/v3`, `/v1`, `/k8s`) plus the Docusaurus prefixes such as `/`, `/docs`,
+# `/assets`, etc. Use `rancher.additionalStaticPaths` to register any extra Rancher-only
+# prefixes (e.g., `/assets/...` branches) and `docusaurus.additionalStaticPaths` when
+# you need to extend the docs paths without touching the defaults.
+
 resources:
   requests:
     cpu: 100m
