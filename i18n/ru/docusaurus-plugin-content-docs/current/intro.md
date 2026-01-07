@@ -30,7 +30,7 @@ sidebar_position: 1
 ![create cluster](../../../../docs/img/create-cluster.png)
 
 ### Дождитесь создания кластера
-Обычно это занимает 3–4 минуты
+Обычно это занимает 3–4 минуты. Ждите, пока прогресс дойдёт до **Done** и появится install-команда — только после этого запускайте её на ноде.
 
 ![creating cluster](../../../../docs/img/creating-cluster.png)
 
@@ -45,6 +45,7 @@ sidebar_position: 1
 :::
 
 ### Вернитесь на [gorizond](https://gorizond.negash.ru) и дождитесь готовности кластера
+После запуска install-команды и подключения ноды вы увидите кластер как Imported K3s с показателями CPU/Memory/Pods.
 
 ![wait cluster ready](../../../../docs/img/wait-cluster-ready.png)
 
