@@ -30,7 +30,7 @@ With workspace location and k3s version
 ![create cluster](img/create-cluster.png)
 
 ### Wait cluster created
-It will take about 3-4 minutes
+It will take about 3-4 minutes. Wait until the provisioning bar shows **Done** and the install command appears — only then run it on the node.
 
 ![creating cluster](img/creating-cluster.png)
 
@@ -45,6 +45,7 @@ After running the command on the server or IoT device, the tailscale client will
 :::
 
 ### Go to [gorizond](https://gorizond.negash.ru) home page and wait cluster ready
+After running the install command and joining a node, you should see the cluster as Imported K3s with CPU/Memory/Pods stats.
 
 ![wait cluster ready](img/wait-cluster-ready.png)
 
